@@ -1,0 +1,45 @@
+class Employee:
+    def __init__(self, emp_id, name, position, salary):
+        self.emp_id = emp_id
+        self.name = name
+        self.position = position
+        self.salary = salary
+
+    def __str__(self):
+        return f"Employee ID: {self.emp_id}, Name: {self.name}, Position: {self.position}, Salary: {self.salary}"
+
+class HRManager:
+    def __init__(self):
+        self.employees = []
+
+    def add_employee(self, employee):
+        self.employees.append(employee)
+
+    def remove_employee(self, emp_id):
+        self.employees = [e for e in self.employees if e.emp_id != emp_id]
+
+    def list_employees(self):
+        for employee in self.employees:
+            print(employee)
+
+# Creating Employee records
+employee1 = Employee(1, "John Doe", "Manager", 60000)
+employee2 = Employee(2, "Jane Smith", "Developer", 50000)
+employee3 = Employee(3, "Bob Johnson", "Designer", 45000)
+
+# Creating an HR Manager
+hr_manager = HRManager()
+
+# Adding employees to the HR system
+hr_manager.add_employee(employee1)
+hr_manager.add_employee(employee2)
+hr_manager.add_employee(employee3)
+
+# Listing all employees
+print("All Employees:")
+hr_manager.list_employees()
+
+# Removing an employee
+hr_manager.remove_employee(2)
+print("\nAfter Removing Employee 2:")
+hr_manager.list_employees()
